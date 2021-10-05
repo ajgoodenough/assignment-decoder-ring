@@ -4,6 +4,7 @@
 // of the anonymous function on line 6
 
 const polybiusModule = (function () {
+  //grid numbering -> "5 x 5 box" 
   const grid = {
     11: "a",
     12: "f",
