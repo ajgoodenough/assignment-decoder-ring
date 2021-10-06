@@ -1,11 +1,11 @@
 const expect = require("chai").expect;
-const substitution = require("../src/substitution");
+const {substitution} = require("../src/substitution");
 
 describe("substitution()", () => {
   describe("encoding", () => {
     it("should encode a message by using the given alphabet value", () => {
-      const actual = substitution("thinkful", "xoyqmcgrukswaflnthdjpzibev");
-      const expected = "jrufscpw";
+      const actual = substitution("substitution", "xoyqmcgrukswaflnthdjpzibev");
+      const expected = "dpodjujpjulf";
 
       expect(actual).to.equal(expected);
     });
@@ -15,23 +15,23 @@ describe("substitution()", () => {
     });
 
     it("should return false if alphabet is not exactly 26 characters long", () => {
-      expect(substitution("thinkful", "abcd")).to.be.false;
+      expect(substitution("substitution", "abc")).to.be.false;
     });
 
     it("should return false if there are any duplicate characters in substitution alphabet", () => {
-      expect(substitution("thinkful", "xoyxmcgruksxaflnthdjpzibev")).to.be.false;
+      expect(substitution("substitution", "xxyqmcgrukswaflnthdjpzibev")).to.be.false;
     });
 
     it("should maintain spaces", () => {
-      const actual = substitution("You are an excellent spy", "xoyqmcgrukswaflnthdjpzibev");
-      const expected = "elp xhm xf mbymwwmfj dne";
+      const actual = substitution("I want you to be happier", "xoyqmcgrukswaflnthdjpzibev");
+      const expected = "u ixfj elp jl om rxnnumh";
 
       expect(actual).to.equal(expected);
     });
 
     it("should work with a substitution alphabet containing special characters", () => {
-      const actual = substitution("message", "$wae&zrdxtfcygvuhbijnokmpl");
-      const expected = "y&ii$r&";
+      const actual = substitution("analysis", "$wae&zrdxtfcygvuhbijnokmpl");
+      const expected = "$g$cpixi";
 
       expect(actual).to.equal(expected);
     });
@@ -46,8 +46,8 @@ describe("substitution()", () => {
 
   describe("decoding", () => {
     it("should decode a message by using the substitution alphabet", () => {
-      const actual = substitution("jrufscpw", "xoyqmcgrukswaflnthdjpzibev", false);
-      const expected = "thinkful";
+      const actual = substitution("dpodjujpjulf", "xoyqmcgrukswaflnthdjpzibev", false);
+      const expected = "substitution";
 
       expect(actual).to.equal(expected);
     });
@@ -60,8 +60,8 @@ describe("substitution()", () => {
     });
 
     it("should maintain spaces", () => {
-      const actual = substitution("elp xhm xf mbymwwmfj dne", "xoyqmcgrukswaflnthdjpzibev", false);
-      const expected = "you are an excellent spy";
+      const actual = substitution("u ixfj elp jl om rxnnumh", "xoyqmcgrukswaflnthdjpzibev", false);
+      const expected = "i want you to be happier";
 
       expect(actual).to.equal(expected);
     });

@@ -1,7 +1,8 @@
 const expect = require("chai").expect;
-const caesar = require("../src/caesar");
+const {caesar} = require("../src/caesar")
 
 describe("caesar()", () => {
+  describe("encoding and decoding a message", () => {
   it("should return an encoded string if correct input given", () => {
     const input = "Woohoo! This actually works!";
     const shift = 3;
@@ -15,11 +16,13 @@ describe("caesar()", () => {
     const input = "zrrkrr! wklv dfwxdoob zrunv!";
     const shift = 3;
     const actual = caesar(input, shift, false);
-    const expected = "Woohoo! This actually works!";
+    const expected = "woohoo! this actually works!";
 
     expect(actual).to.be.equal(expected);
+    });
   });
 
+  describe("grammatically and phonetically correct", () => {
   it("should maintain spaces and any other non-alphabetic symbols", () => {
     const input = "Hello, World.";
     const shift = -8;
@@ -36,8 +39,10 @@ describe("caesar()", () => {
     const expected = "lipps asvph.";
 
     expect(actual).to.be.equal(expected);
+    });
   });
 
+  describe("correct shift values", () => {
   it("should return false if shift value not given", () => {
     const input = "something simple";
     const actual = caesar(input);
@@ -64,8 +69,10 @@ describe("caesar()", () => {
     const actual = caesar(input, -30);
 
     expect(actual).to.be.false;
+    });
   });
 
+  describe("managing the alphabet", () => {
   it("should wrap around to end of alphabet when shift goes past beginning of alphabet", () => {
     const actual = caesar("amazon", -7);
     const expected = "tftshg";
@@ -78,5 +85,6 @@ describe("caesar()", () => {
     const expected = "hnuuxf";
     
     expect(actual).to.equal(expected);
+    });
   });
 });

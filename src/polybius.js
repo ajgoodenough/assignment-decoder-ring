@@ -45,7 +45,7 @@ const polybiusModule = (function () {
         return false;
       const keys = Object.keys(grid);
       const values = Object.values(grid);
-
+      
       for (let i = 0; i < input.length; i++) {
         if (input[i] === " ") {
           result += " ";
